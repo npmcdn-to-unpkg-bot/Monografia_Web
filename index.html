@@ -1,0 +1,43 @@
+<html ng-app="myApp">
+<head>
+	
+	<script src="js/angularJs/angular.min.js"></script>
+
+	<script>
+
+	var app = angular.module('myApp', []);
+
+	var req = {
+	 method: 'GET',
+	 url: 'http://localhost:8081/restAPI/usuarios/9'
+	}
+	app.controller('myCtrl', function($scope, $http) {
+	    $http.get(req)
+	    .then(function(response) {
+	        $scope.myRequest = response.data;
+	    });
+	});
+
+	</script>
+
+</head>
+<body> 
+	
+	<h1>Diabete teste</h1>
+
+	Name : <input type="text" ng-model="name" />
+	<br />
+
+	Your name is: {{name}}
+
+	<br />
+
+	<!-- Teste para Servico -->
+	<div  ng-controller="myCtrl">
+		Objeto vindo do Servico : {{myRequest}}
+	</div>
+
+	
+
+</body>
+</html>
